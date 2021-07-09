@@ -19,7 +19,7 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-// get last 7 workouts in db
+// get last 7 workouts in db and show total duration and total weight in charts
 router.get("/api/workouts/range", (req, res) => {
   db.Workout.aggregate([
     {
@@ -51,7 +51,7 @@ router.post("/api/workouts", (req, res) => {
     });
 });
 
-// add exercises to workout
+// add exercises to a workout
 router.put('/api/workouts/:id', (req, res) => {
   db.Workout.findOneAndUpdate(
     {
