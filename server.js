@@ -20,6 +20,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
 // routes
 app.use(express.Router());
 
+// get index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
 // get exercise.html
 app.get("/exercise", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/exercise.html"));
