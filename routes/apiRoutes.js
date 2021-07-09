@@ -12,6 +12,20 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
+// get all workouts in db
+router.get("/api/workouts/range", (req, res) => {
+  db.Workout.find({})
+    .then((data) => {
+      while(data.length > 7) {
+        let workoutRange = data.shift()
+      }
+      res.json(data);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+
 // create a workout in db
 router.post("/api/workouts", (req, res) => {
   db.Workout.create(req.body)
