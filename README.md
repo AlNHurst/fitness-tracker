@@ -33,7 +33,6 @@ The fitness tracker is an application that allows users to view, create, and tra
 * Node.js
 * Express
 * Mongoose
-* Mongo
 * Insomnia
 
 ## Links
@@ -41,7 +40,7 @@ The fitness tracker is an application that allows users to view, create, and tra
 https://github.com/AlNHurst/fitness-tracker
 
 * Heroku App <br>
-
+https://vast-woodland-80592.herokuapp.com/
 
 ## Contact
 * Direct questions via [GitHub](https://github.com/AlNHurst) or email [Alexandra Hurst](mailto:ahurst10@uncc.edu)
