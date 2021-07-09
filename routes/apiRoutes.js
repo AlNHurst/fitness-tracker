@@ -29,10 +29,9 @@ router.get("/api/workouts/range", (req, res) => {
       }
     },
   ])
+    .limit(7)
+    .sort({ day: -1 })
     .then((data) => {
-      while (data.length > 7) {
-        let workoutRange = data.shift()
-      }
       res.json(data);
     })
     .catch(err => {
