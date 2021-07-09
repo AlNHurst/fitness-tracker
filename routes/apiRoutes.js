@@ -3,17 +3,11 @@ const router = require('express').Router();
 
 // get all workouts in db
 router.get("/api/workouts", (req, res) => {
-  db.Workout.find({})
-    .then((data) => {
-      res.json(data);
-    })
-    .catch(err => {
-      res.json(err);
-    });
   db.Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "$exercises.duration" }
+        totalDuration: { $sum: "$exercises.duration" },
+        totalWeight: { $sum: "$exercises.weight" }
       }
     },
   ])
@@ -25,9 +19,16 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-// get all workouts in db
+// get last 7 workouts in db
 router.get("/api/workouts/range", (req, res) => {
-  db.Workout.find({})
+  db.Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$exercises.duration" },
+        totalWeight: { $sum: "$exercises.weight" }
+      }
+    },
+  ])
     .then((data) => {
       while (data.length > 7) {
         let workoutRange = data.shift()
@@ -52,15 +53,12 @@ router.post("/api/workouts", (req, res) => {
 
 // add exercises to workout
 router.put('/api/workouts/:id', (req, res) => {
-  db.Workout.updateOne(
+  db.Workout.findOneAndUpdate(
     {
       _id: req.params.id
     },
     {
       $push: { exercises: req.body }
-    },
-    {
-      new: true
     })
     .then(response => {
       res.json(response)
