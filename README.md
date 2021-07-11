@@ -8,7 +8,6 @@
 * [Framework](#Framework)
 * [Links](#Links)
 * [Contact](#Contact)
-* [License](#License)
 
 ## Description
 The fitness tracker is an application that allows users to view, create, and track daily workouts. The user can log multiple exercises in a workout, including cardio and resistance training. 
@@ -20,7 +19,7 @@ The fitness tracker is an application that allows users to view, create, and tra
 * View the total duration (in minutes) of each workout from the past seven workouts in a descriptive bar graph.
 
 ## Demonstration
-* VS Code Execution Demonstration
+* Usage Demonstration
 ![gif Demonstration](https://github.com/AlNHurst/fitness-tracker/blob/main/public/images/fitness-tracker.gif)
 
 ## Installation
